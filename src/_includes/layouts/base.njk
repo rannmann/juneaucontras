@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - Juneau Folk Dance Community</title>
+    <link rel="icon" type="image/jpeg" href="/images/logo2.jpg">
+    <link rel="stylesheet" href="/css/style.css">
+    {% if page.url == '/admin/' %}
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    {% endif %}
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="/images/logo2.jpg" alt="Dancing boots logo" class="logo-boots">
+                <h1 class="logo-text">Juneau Folk Dance Community</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
+                    <li><a href="/schedule/" {% if page.url == "/schedule/" %}class="active"{% endif %}>Schedule</a></li>
+                    <li><a href="/locations/" {% if page.url == "/locations/" %}class="active"{% endif %}>Locations</a></li>
+                    <li><a href="/links/" {% if page.url == "/links/" %}class="active"{% endif %}>Other Sites</a></li>
+                    <li><a href="/more/" {% if page.url == "/more/" %}class="active"{% endif %}>More Info</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {{ content | safe }}
+    </main>
+
+    <footer>
+        <p>Site maintained by <a href="mailto:doug@juneaucontras.org">Doug Edgar</a></p>
+    </footer>
+
+    {% if page.url == '/admin/' %}
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+    {% endif %}
+</body>
+</html>
