@@ -1,0 +1,75 @@
+---
+layout: layouts/base.njk
+title: Dance Schedule
+---
+
+<div class="schedule-container">
+    <h2>Dance Schedule for 2025</h2>
+    
+    <div class="schedule-table-container">
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Dance</th>
+                    <th>Location</th>
+                    <th>Time</th>
+                    <th>Band</th>
+                    <th>Caller</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if collections.schedule.length > 0 %}
+                    {% for dance in collections.schedule | sort(false, false, 'data.date') %}
+                        <tr class="{% if dance.data.cancelled %}cancelled{% endif %}">
+                            <td class="date-cell">{{ dance.data.date | dateDisplay }}</td>
+                            <td class="dance-cell">
+                                <strong>{{ dance.data.title }}</strong>
+                                {% if dance.data.cancelled %}
+                                    <br><span class="cancelled-text">CANCELLED</span>
+                                {% endif %}
+                            </td>
+                            <td class="location-cell">{{ dance.data.location }}</td>
+                            <td class="time-cell">{{ dance.data.time }}</td>
+                            <td class="band-cell">{{ dance.data.band }}</td>
+                            <td class="caller-cell">
+                                {% if dance.data.caller %}
+                                    {{ dance.data.caller }}
+                                {% else %}
+                                    TBD
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% if dance.content %}
+                            <tr class="description-row">
+                                <td colspan="6" class="description-cell">
+                                    {{ dance.content | safe }}
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="no-events">No dances scheduled yet. Check back soon!</td>
+                    </tr>
+                {% endif %}
+                
+                <!-- Add some empty rows for manual editing -->
+                {% for i in range(0, 5) %}
+                <tr class="empty-row">
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="schedule-footer">
+        <p><strong>Regular Folk Dancing:</strong> Every Sunday, 6:00-8:00 PM at the Racquet Club Downtown with recorded music and local leaders.</p>
+    </div>
+</div>

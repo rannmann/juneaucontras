@@ -1,0 +1,68 @@
+backend:
+  name: github
+  repo: rannmann/juneaucontras
+  branch: main
+
+# For local development
+# backend:
+#   name: test-repo
+
+media_folder: "src/images"
+public_folder: "/images"
+
+collections:
+  - name: "schedule"
+    label: "Dance Schedule"
+    folder: "src/content/schedule"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Time", name: "time", widget: "string", default: "7:30-10:30 PM"}
+      - {label: "Location", name: "location", widget: "string", default: "St. Ann's Hall"}
+      - {label: "Band", name: "band", widget: "string"}
+      - {label: "Caller", name: "caller", widget: "string", required: false}
+      - {label: "Cost", name: "cost", widget: "string", default: "$10"}
+      - {label: "Description", name: "body", widget: "markdown", required: false}
+      - {label: "Cancelled", name: "cancelled", widget: "boolean", default: false}
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "src/index.njk"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Hero Title", name: "heroTitle", widget: "string"}
+          - {label: "Hero Content", name: "heroContent", widget: "markdown"}
+          - label: "Feature Boxes"
+            name: "features"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Content", name: "content", widget: "markdown"}
+              - {label: "Link Text", name: "linkText", widget: "string", required: false}
+              - {label: "Link URL", name: "linkUrl", widget: "string", required: false}
+
+      - label: "Locations"
+        name: "locations"
+        file: "src/locations.njk"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Content", name: "body", widget: "markdown"}
+
+      - label: "Links"
+        name: "links"
+        file: "src/links.njk"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Content", name: "body", widget: "markdown"}
+
+      - label: "More Info"
+        name: "more"
+        file: "src/more.njk"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Content", name: "body", widget: "markdown"}
