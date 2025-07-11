@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: rannmann/juneaucontras
+  name: git-gateway
   branch: main
 
 # For local development
