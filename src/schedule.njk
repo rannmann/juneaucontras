@@ -6,6 +6,13 @@ title: Dance Schedule
 <div class="schedule-container">
     <h2>Dance Schedule for 2025</h2>
     
+    {% if settings.regularDancing.enabled %}
+    <div class="schedule-footer" style="margin-bottom: 2rem;">
+        <p><strong>{{ settings.regularDancing.note }}</strong></p>
+        <p>{{ settings.regularDancing.schedule | safe }}</p>
+    </div>
+    {% endif %}
+    
     <div class="schedule-table-container">
         <table class="schedule-table">
             <thead>
@@ -22,17 +29,17 @@ title: Dance Schedule
                 {% if collections.schedule.length > 0 %}
                     {% for dance in collections.schedule | sort(false, false, 'data.date') %}
                         <tr class="{% if dance.data.cancelled %}cancelled{% endif %}">
-                            <td class="date-cell">{{ dance.data.date | dateDisplay }}</td>
-                            <td class="dance-cell">
+                            <td class="date-cell" data-label="Date">{{ dance.data.date | dateDisplay }}</td>
+                            <td class="dance-cell" data-label="Dance">
                                 <strong>{{ dance.data.title }}</strong>
                                 {% if dance.data.cancelled %}
                                     <br><span class="cancelled-text">CANCELLED</span>
                                 {% endif %}
                             </td>
-                            <td class="location-cell">{{ dance.data.location }}</td>
-                            <td class="time-cell">{{ dance.data.time }}</td>
-                            <td class="band-cell">{{ dance.data.band }}</td>
-                            <td class="caller-cell">
+                            <td class="location-cell" data-label="Location">{{ dance.data.location }}</td>
+                            <td class="time-cell" data-label="Time">{{ dance.data.time }}</td>
+                            <td class="band-cell" data-label="Band">{{ dance.data.band }}</td>
+                            <td class="caller-cell" data-label="Caller">
                                 {% if dance.data.caller %}
                                     {{ dance.data.caller }}
                                 {% else %}
@@ -69,7 +76,4 @@ title: Dance Schedule
         </table>
     </div>
     
-    <div class="schedule-footer">
-        <p><strong>Regular Folk Dancing:</strong> Every Sunday, 6:00-8:00 PM at the Racquet Club Downtown with recorded music and local leaders.</p>
-    </div>
 </div>

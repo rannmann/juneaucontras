@@ -9,20 +9,22 @@ title: Other Sites
     <p>Here is a list of folk music and dance sites</p>
     
     <div class="links-list">
-        <ul>
-            <li><a href="http://www.akfolkfest.org/">ALASKA FOLK FESTIVAL</a></li>
-            <li><a href="http://www.jifdancers.org/index.html">Juneau International Folkdancers</a></li>
-            <li><a href="http://www.thedancingbears.com/">Dancing Bears</a></li>
-            <li><a href="http://contraborealis.org/">Contra Borealis Dancers</a></li>
-            <li><a href="http://www.tedcrane.com/DanceDB/">Ted Crane's Dance Database</a></li>
-            <li><a href="http://www.cdss.org/">Country Dance and Song Society</a></li>
-            <li><a href="http://www.nwfolklife.org/">NW Folklife Home Page</a></li>
-            <li><a href="http://www.wildasparagus.com/">Wild Asparagus Home Page</a></li>
-            <li><a href="http://www.alaskafolkmusic.org/">Alaska Folk Music website</a></li>
-            <li><a href="http://www.cambridgefolk.org.uk/contra/dances/">some contradances for callers</a></li>
-            <li><a href="http://www.anchoragefolkfestival.org/">Anchorage Folk Festival</a></li>
-            <li><a href="http://www.rexblazer.com/">Rex Blazer</a></li>
-            <li><a href="https://www.facebook.com/alaskastringband/">Alaska String Band</a> – Zahasky Family</li>
-        </ul>
+        {% set categories = ["Dance Organizations", "Local Resources", "Other"] %}
+        {% for category in categories %}
+            {% set categoryLinks = collections.links | selectattr("data.category", "equalto", category) | sort(false, false, "data.order") %}
+            {% if categoryLinks.length > 0 %}
+                <h3>{{ category }}</h3>
+                <ul>
+                {% for link in categoryLinks %}
+                    <li>
+                        <a href="{{ link.data.url }}" target="_blank">{{ link.data.title }}</a>
+                        {% if link.data.description %}
+                        - {{ link.data.description }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endfor %}
     </div>
 </div>

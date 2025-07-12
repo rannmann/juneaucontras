@@ -7,38 +7,23 @@ title: Locations
     <h2>Dance Locations</h2>
     
     <div class="locations-grid">
+        {% for location in collections.locations %}
         <div class="location-card">
-            <h3>🏛️ St. Ann's Parish Hall</h3>
+            <h3>{{ location.data.title }}</h3>
             <div class="location-details">
-                <p><strong>Address:</strong> Cathedral of the Nativity at 5th and Gold (Upstairs)</p>
-                <p><strong>Used for:</strong> Barn dances</p>
-                <p><strong>Schedule:</strong> 7:30 instruction for beginners, dancing from 8-11pm</p>
+                <p><strong>Address:</strong> {{ location.data.address }}</p>
+                {% if location.data.schedule %}
+                <p><strong>Schedule:</strong> {{ location.data.schedule }}</p>
+                {% endif %}
+                {% if location.data.mapLink %}
+                <p><a href="{{ location.data.mapLink }}" target="_blank">View on Map</a></p>
+                {% endif %}
+                {% if location.content %}
+                {{ location.content | safe }}
+                {% endif %}
             </div>
         </div>
-        
-        <div class="location-card">
-            <h3>🎭 Centennial Hall</h3>
-            <div class="location-details">
-                <p><strong>Address:</strong> Egan Drive at Willoughby</p>
-            </div>
-        </div>
-        
-        <div class="location-card">
-            <h3>🎨 Juneau Arts and Culture Center</h3>
-            <div class="location-details">
-                <p><strong>Address:</strong> 350 Whittier St. downtown</p>
-                <p><strong>Used for:</strong> Coffee & Jam during Folk Festival and other community events</p>
-            </div>
-        </div>
-        
-        <div class="location-card">
-            <h3>🏓 Racquet Club Downtown</h3>
-            <div class="location-details">
-                <p><strong>Used for:</strong> Weekly folk dancing</p>
-                <p><strong>Schedule:</strong> Every Sunday, 4:00-6:00 PM</p>
-                <p><strong>Format:</strong> Recorded music with local leaders</p>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     
     <div class="location-notes">

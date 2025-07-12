@@ -845,29 +845,89 @@ footer a:hover {
         grid-template-columns: 1fr;
     }
     
-    /* Schedule table mobile */
-    .schedule-table {
-        font-size: 0.8rem;
+    /* Schedule table mobile - transform to cards */
+    .schedule-table-container {
+        box-shadow: none;
+        overflow: visible;
     }
     
-    .schedule-table th,
+    .schedule-table thead {
+        display: none;
+    }
+    
+    .schedule-table,
+    .schedule-table tbody,
+    .schedule-table tr,
     .schedule-table td {
-        padding: 0.5rem 0.25rem;
+        display: block;
+        width: 100%;
     }
     
-    .date-cell,
-    .location-cell,
-    .band-cell,
-    .caller-cell {
-        min-width: 80px;
+    .schedule-table tr {
+        margin-bottom: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: var(--shadow-sm);
+        overflow: hidden;
+        background: var(--bg-primary);
     }
     
-    .dance-cell {
-        min-width: 100px;
+    .schedule-table td {
+        border: none;
+        padding: 0.75rem 1rem;
+        text-align: left;
+        position: relative;
+        padding-left: 40%;
     }
     
-    .time-cell {
-        min-width: 80px;
+    .schedule-table td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1rem;
+        width: 35%;
+        font-weight: 600;
+        color: var(--primary-blue);
+    }
+    
+    /* Style the date as a header */
+    .schedule-table .date-cell {
+        background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-blue) 100%);
+        color: white;
+        font-weight: 600;
+        padding-left: 1rem;
+        text-align: center;
+    }
+    
+    .schedule-table .date-cell:before {
+        display: none;
+    }
+    
+    /* Style the dance name prominently */
+    .schedule-table .dance-cell {
+        font-size: 1.1rem;
+        padding-top: 1rem;
+        padding-bottom: 0.5rem;
+    }
+    
+    /* Hide empty cells */
+    .schedule-table td:empty {
+        display: none;
+    }
+    
+    /* Description rows */
+    .description-row {
+        margin-top: -1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .description-cell {
+        padding: 0 1rem 1rem 1rem !important;
+        padding-left: 1rem !important;
+        font-style: italic;
+        color: var(--text-secondary);
+    }
+    
+    .description-cell:before {
+        display: none;
     }
     
     /* Locations page mobile */
