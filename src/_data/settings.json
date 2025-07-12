@@ -1,0 +1,14 @@
+{
+  "siteName": "Juneau Contras",
+  "tagline": "Juneau Folk Dance",
+  "contactEmail": "doug@juneaucontras.org",
+  "regularDancing": {
+    "enabled": true,
+    "schedule": "Folk dancing takes place on the <strong>1st & 3rd Wednesdays, from 7-8:30pm</strong>. Check the schedule for location.",
+    "note": "In addition to the dance schedule below, there is also regular folk dancing:"
+  },
+  "campDamp": {
+    "cancelled": true,
+    "cancellationNotice": "Camp Damp 2025 has been cancelled"
+  }
+}

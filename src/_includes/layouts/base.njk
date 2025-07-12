@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} - Juneau Folk Dance Community</title>
+    <title>{{ title }} - {{ settings.siteName }}</title>
     <link rel="icon" type="image/jpeg" href="/images/logo2.jpg">
     <link rel="stylesheet" href="/css/style.css">
     {% if page.url == '/admin/' %}
@@ -15,7 +15,7 @@
         <div class="header-content">
             <div class="logo">
                 <img src="/images/logo2.jpg" alt="Dancing boots logo" class="logo-boots">
-                <h1 class="logo-text">Juneau Folk Dance Community</h1>
+                <h1 class="logo-text">{{ settings.tagline }}</h1>
             </div>
             <nav>
                 <ul>
@@ -34,7 +34,7 @@
     </main>
 
     <footer>
-        <p>Site maintained by <a href="mailto:doug@juneaucontras.org">Doug Edgar</a></p>
+        <p>Site maintained by <a href="mailto:{{ settings.contactEmail }}">{{ settings.contactEmail }}</a></p>
     </footer>
 
     {% if page.url == '/admin/' %}

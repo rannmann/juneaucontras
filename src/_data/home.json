@@ -1,0 +1,24 @@
+{
+  "heroTitle": "Welcome to Juneau Contras",
+  "heroSubtitle": "Come dance with us! Contra dancing is a traditional American folk dance done to live music. It's easy to learn, and fun for all ages and experience levels. No partner or experience required!",
+  "features": [
+    {
+      "title": "Coffee & Jam",
+      "content": "Come join the fun on the 2nd Sundays of each month, from 1:30pm to 4:30pm at Triangle Club. There will be coffee and snacks to purchase ($5 donation suggested).",
+      "linkText": "",
+      "linkUrl": ""
+    },
+    {
+      "title": "Camp Damp 2025",
+      "content": "Our annual dance camp has been cancelled for 2025. We hope to see you at future events!",
+      "linkText": "Learn more",
+      "linkUrl": "/campdamp/"
+    },
+    {
+      "title": "Dance Schedule",
+      "content": "Check out our upcoming contra dances and special events. Most dances are from 7:30-10:30 PM.",
+      "linkText": "View Schedule",
+      "linkUrl": "/schedule/"
+    }
+  ]
+}
