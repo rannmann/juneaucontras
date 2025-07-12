@@ -9,22 +9,46 @@ title: Other Sites
     <p>Here is a list of folk music and dance sites</p>
     
     <div class="links-list">
-        {% set categories = ["Dance Organizations", "Local Resources", "Other"] %}
-        {% for category in categories %}
-            {% set categoryLinks = collections.links | selectattr("data.category", "equalto", category) | sort(false, false, "data.order") %}
-            {% if categoryLinks.length > 0 %}
-                <h3>{{ category }}</h3>
-                <ul>
-                {% for link in categoryLinks %}
-                    <li>
-                        <a href="{{ link.data.url }}" target="_blank">{{ link.data.title }}</a>
-                        {% if link.data.description %}
-                        - {{ link.data.description }}
-                        {% endif %}
-                    </li>
-                {% endfor %}
-                </ul>
+        <h3>Dance Organizations</h3>
+        <ul>
+        {% for link in collections.links %}
+            {% if link.data.category == "Dance Organizations" %}
+            <li>
+                <a href="{{ link.data.url }}" target="_blank">{{ link.data.title }}</a>
+                {% if link.data.description %}
+                - {{ link.data.description }}
+                {% endif %}
+            </li>
             {% endif %}
         {% endfor %}
+        </ul>
+
+        <h3>Local Resources</h3>
+        <ul>
+        {% for link in collections.links %}
+            {% if link.data.category == "Local Resources" %}
+            <li>
+                <a href="{{ link.data.url }}" target="_blank">{{ link.data.title }}</a>
+                {% if link.data.description %}
+                - {{ link.data.description }}
+                {% endif %}
+            </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+
+        <h3>Other</h3>
+        <ul>
+        {% for link in collections.links %}
+            {% if link.data.category == "Other" %}
+            <li>
+                <a href="{{ link.data.url }}" target="_blank">{{ link.data.title }}</a>
+                {% if link.data.description %}
+                - {{ link.data.description }}
+                {% endif %}
+            </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
     </div>
 </div>
